@@ -1,0 +1,25 @@
+version: "3.9"
+services:
+  eurekaserver:
+    build: C:\Users\habensalah\IdeaProjects\eureka
+    container_name: eurekaserver
+    image: eurekaserver
+    networks:
+      - eureka-server
+    ports:
+      - "8761:8761"
+  microservice-demo:
+    build: C:\Users\habensalah\IdeaProjects\gestionCandidat
+    image: gestioncondidat
+    ports:
+      - "8081:8081"
+    networks:
+      - eureka-server
+    environment:
+      - eureka.client.serviceUrl.defaultZone=http://eurekaserver:8761/eureka
+    depends_on:
+      - eurekaserver
+networks:
+  eureka-server:
+    name: eureka-server
+    driver: bridge
