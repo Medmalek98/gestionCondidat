@@ -13,12 +13,29 @@ services:
     image: gestioncondidat
     ports:
       - "8081:8081"
-    networks:
-      - eureka-server
     environment:
       - eureka.client.serviceUrl.defaultZone=http://eurekaserver:8761/eureka
     depends_on:
       - eurekaserver
+    networks:
+      - eureka-server
+  mysqlservice:
+    build: C:\Users\habensalah\Downloads\nodejs
+    image: mysqlimage
+    networks:
+      - eureka-server
+    ports:
+      - "3306:3306"
+  nodejsservice:
+    build: C:\Users\habensalah\Downloads\nodejs\nodedockerfile
+    image: my-node-app
+    networks:
+      - eureka-server
+    ports:
+      - "3000:3000"
+    depends_on:
+      - eurekaserver
+      - mysqlservice
 networks:
   eureka-server:
     name: eureka-server
