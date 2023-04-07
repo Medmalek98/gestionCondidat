@@ -8,7 +8,7 @@ services:
       - eureka-server
     ports:
       - "8761:8761"
-  microservice-demo:
+  springservice:
     build: C:\Users\habensalah\IdeaProjects\gestionCandidat
     image: gestioncondidat
     ports:
@@ -36,6 +36,17 @@ services:
     depends_on:
       - eurekaserver
       - mysqlservice
+  gateway:
+    build: C:\Users\habensalah\IdeaProjects\gateway
+    image: gateway
+    ports:
+      - "8762:8762"
+    environment:
+      - eureka.client.serviceUrl.defaultZone=http://eurekaserver:8761/eureka
+    depends_on:
+      - eurekaserver
+    networks:
+      - eureka-server
 networks:
   eureka-server:
     name: eureka-server

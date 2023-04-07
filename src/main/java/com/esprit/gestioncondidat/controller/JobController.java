@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+@RequestMapping("/apispring")
 
 @RestController
 public class JobController {
@@ -20,6 +21,8 @@ public class JobController {
     @PostMapping("/afficherTousJobs")
     List<Job> afficherTousJobs(){
        return jobService.afficherTousJobs();
-
+    }
+    @PostMapping("/modifierEtat/{id}/{disponible}")
+    void modifierEtat(@PathVariable("id") Integer id , @PathVariable("disponible") Boolean disponible ){ jobService.modifierEtat( id , disponible);
     }
 }
