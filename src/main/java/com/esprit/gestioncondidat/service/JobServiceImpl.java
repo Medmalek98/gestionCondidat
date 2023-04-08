@@ -12,6 +12,12 @@ import java.util.Optional;
 public class JobServiceImpl implements IJobService{
     @Autowired
     JobRepository jobRepository;
+
+    @Override
+    public void addJobs(Job job) {
+        jobRepository.save(job);
+    }
+
     @Override
     public List<Job> afficherTousJobs() {
         return jobRepository.findAll();

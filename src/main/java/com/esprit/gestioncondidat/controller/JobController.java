@@ -25,4 +25,7 @@ public class JobController {
     @PostMapping("/modifierEtat/{id}/{disponible}")
     void modifierEtat(@PathVariable("id") Integer id , @PathVariable("disponible") Boolean disponible ){ jobService.modifierEtat( id , disponible);
     }
+    @PostMapping("/ajouterJob")
+    void ajouterJob(@RequestBody  Job job ){ jobService.addJobs(job);
+    }
 }
