@@ -10,4 +10,5 @@ public interface ICandidatService {
     public Candidat getCandidat(Integer id);
     public void deleteCandidat(Integer id);
 
+    
 }
