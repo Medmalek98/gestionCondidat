@@ -1,7 +1,7 @@
 version: "3.9"
 services:
   eurekaserver:
-    build: C:\Users\habensalah\IdeaProjects\eureka
+    build: C:\Users\Public\malek\Eureka-services
     container_name: eurekaserver
     image: eurekaserver
     networks:
@@ -9,7 +9,7 @@ services:
     ports:
       - "8761:8761"
   springservice:
-    build: C:\Users\habensalah\IdeaProjects\gestionCandidat
+    build: C:\Users\Public\malek\GestionCandidature-MicroServices
     image: gestioncondidat
     ports:
       - "8081:8081"
@@ -20,14 +20,14 @@ services:
     networks:
       - eureka-server
   mysqlservice:
-    build: C:\Users\habensalah\Downloads\nodejs
+    build: C:\Users\Public\malek\Nodejs-Microservices
     image: mysqlimage
     networks:
       - eureka-server
     ports:
       - "3306:3306"
   nodejsservice:
-    build: C:\Users\habensalah\Downloads\nodejs\nodedockerfile
+    build: C:\Users\Public\malek\Nodejs-Microservices\nodedockerfile
     image: my-node-app
     networks:
       - eureka-server
@@ -37,7 +37,7 @@ services:
       - eurekaserver
       - mysqlservice
   gateway:
-    build: C:\Users\habensalah\IdeaProjects\gateway
+    build: C:\Users\Public\malek\gateway
     image: gateway
     ports:
       - "8762:8762"
