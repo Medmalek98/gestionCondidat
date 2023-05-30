@@ -18,7 +18,7 @@ public class GestionCondidatApplication {
     @Bean
     ApplicationRunner start (ICandidatService candidatService){
         return args -> {
-            Stream.of(new Candidat("hatem","bensalah","hatem@esprit.tn"),
+            Stream.of(new Candidat("malek","chamakh","malek@esprit.tn"),
                     new Candidat("Ahmed","benmohamed","ahmed@yahoo.fr")).forEach(
                             candidat -> {
                                 candidatService.addCandidat(candidat);
